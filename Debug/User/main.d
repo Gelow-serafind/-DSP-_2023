@@ -36,6 +36,9 @@ User/main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/math.h
 User/main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/_defs.h
 User/main.obj: D:/workspace_v7/test1/app/time/ti_me.h
 User/main.obj: D:/workspace_v7/test1/app/uart/uart.h
+User/main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/stdlib.h
+User/main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/stdlibf.h
+User/main.obj: D:/workspace_v7/test1/C28x_FPU_LIB/include/FPU.h
 
 ../User/main.c: 
 C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/stdio.h: 
@@ -73,3 +76,6 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/math.h:
 C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/_defs.h: 
 D:/workspace_v7/test1/app/time/ti_me.h: 
 D:/workspace_v7/test1/app/uart/uart.h: 
+C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/stdlib.h: 
+C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.6.LTS/include/stdlibf.h: 
+D:/workspace_v7/test1/C28x_FPU_LIB/include/FPU.h: 

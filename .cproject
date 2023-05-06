@@ -41,6 +41,8 @@
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_16.9.compilerID.DIAG_WRAP.676837790" name="Wrap diagnostic messages (--diag_wrap)" superClass="com.ti.ccstudio.buildDefinitions.C2000_16.9.compilerID.DIAG_WRAP" useByScannerDiscovery="false" value="com.ti.ccstudio.buildDefinitions.C2000_16.9.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_16.9.compilerID.INCLUDE_PATH.1810821429" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.C2000_16.9.compilerID.INCLUDE_PATH" valueType="includePath">
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/app/key}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/C28x_FPU_LIB/include}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/app/FFT}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/app/uart}"/>
 									<listOptionValue builtIn="false" value="D:\workspace_v7\test1\include"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/app/time}"/>

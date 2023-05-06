@@ -23,10 +23,12 @@ ORDERED_OBJS += \
 "./Lib/DSP2833x_SysCtrl.obj" \
 "./Lib/DSP2833x_usDelay.obj" \
 "./User/main.obj" \
+"./app/FFT/FFT.obj" \
 "./app/key/key.obj" \
 "./app/leds/leds.obj" \
 "./app/time/time.obj" \
 "./app/uart/uart.obj" \
+"../C28x_FPU_LIB/lib/C28x_FPU_Lib.lib" \
 "../Lib/28335_RAM_lnk.cmd" \
 "../Lib/DSP2833x_Headers_nonBIOS.cmd" \
 "../Lib/IQmath.lib" \
@@ -40,14 +42,18 @@ RMDIR := RMDIR /S/Q
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include C28x_FPU_LIB/lib/subdir_vars.mk
 -include Lib/subdir_vars.mk
 -include User/subdir_vars.mk
+-include app/FFT/subdir_vars.mk
 -include app/key/subdir_vars.mk
 -include app/leds/subdir_vars.mk
 -include app/time/subdir_vars.mk
 -include app/uart/subdir_vars.mk
+-include C28x_FPU_LIB/lib/subdir_rules.mk
 -include Lib/subdir_rules.mk
 -include User/subdir_rules.mk
+-include app/FFT/subdir_rules.mk
 -include app/key/subdir_rules.mk
 -include app/leds/subdir_rules.mk
 -include app/time/subdir_rules.mk
@@ -182,8 +188,8 @@ test1.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Lib\DSP2833x_ADC_cal.obj" "Lib\DSP2833x_CodeStartBranch.obj" "Lib\DSP2833x_CpuTimers.obj" "Lib\DSP2833x_DefaultIsr.obj" "Lib\DSP2833x_DisInt.obj" "Lib\DSP2833x_GlobalVariableDefs.obj" "Lib\DSP2833x_Gpio.obj" "Lib\DSP2833x_PieCtrl.obj" "Lib\DSP2833x_PieVect.obj" "Lib\DSP2833x_Sci.obj" "Lib\DSP2833x_SysCtrl.obj" "Lib\DSP2833x_usDelay.obj" "User\main.obj" "app\key\key.obj" "app\leds\leds.obj" "app\time\time.obj" "app\uart\uart.obj" 
-	-$(RM) "Lib\DSP2833x_CpuTimers.d" "Lib\DSP2833x_DefaultIsr.d" "Lib\DSP2833x_GlobalVariableDefs.d" "Lib\DSP2833x_Gpio.d" "Lib\DSP2833x_PieCtrl.d" "Lib\DSP2833x_PieVect.d" "Lib\DSP2833x_Sci.d" "Lib\DSP2833x_SysCtrl.d" "User\main.d" "app\key\key.d" "app\leds\leds.d" "app\time\time.d" "app\uart\uart.d" 
+	-$(RM) "Lib\DSP2833x_ADC_cal.obj" "Lib\DSP2833x_CodeStartBranch.obj" "Lib\DSP2833x_CpuTimers.obj" "Lib\DSP2833x_DefaultIsr.obj" "Lib\DSP2833x_DisInt.obj" "Lib\DSP2833x_GlobalVariableDefs.obj" "Lib\DSP2833x_Gpio.obj" "Lib\DSP2833x_PieCtrl.obj" "Lib\DSP2833x_PieVect.obj" "Lib\DSP2833x_Sci.obj" "Lib\DSP2833x_SysCtrl.obj" "Lib\DSP2833x_usDelay.obj" "User\main.obj" "app\FFT\FFT.obj" "app\key\key.obj" "app\leds\leds.obj" "app\time\time.obj" "app\uart\uart.obj" 
+	-$(RM) "Lib\DSP2833x_CpuTimers.d" "Lib\DSP2833x_DefaultIsr.d" "Lib\DSP2833x_GlobalVariableDefs.d" "Lib\DSP2833x_Gpio.d" "Lib\DSP2833x_PieCtrl.d" "Lib\DSP2833x_PieVect.d" "Lib\DSP2833x_Sci.d" "Lib\DSP2833x_SysCtrl.d" "User\main.d" "app\FFT\FFT.d" "app\key\key.d" "app\leds\leds.d" "app\time\time.d" "app\uart\uart.d" 
 	-$(RM) "Lib\DSP2833x_ADC_cal.d" "Lib\DSP2833x_CodeStartBranch.d" "Lib\DSP2833x_DisInt.d" "Lib\DSP2833x_usDelay.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

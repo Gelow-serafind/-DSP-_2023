@@ -13,6 +13,8 @@
 #include "math.h"
 #include "ti_me.h"
 #include "uart.h"
+#include <stdlib.h>
+#include <FPU.h>
 #include "DSP2833x_CpuTimers.h"
 
 #define D2 C[0]
@@ -30,6 +32,12 @@ char key=0;
 int symbol=0;
 Uint16 ReceivedChar=0;
 
+double temp[512];
+int flag=0;
+
+
+
+
 /*******************************************************************************
 * 函 数 名         : delay
 * 函数功能         : 延时函数，通过循环占用CPU，达到延时功能
@@ -38,22 +46,45 @@ Uint16 ReceivedChar=0;
 *******************************************************************************/
 
 
+
 interrupt void TIM0_IRQn(void)
 {
     EALLOW;
+
     LED1_TOGGLE;
-    phi += 0.1;
-    if(phi>2*M_PI)
+
+    phi += 1;
+//    if(phi>2*M_PI)
+    if(phi>512)
         phi=0;
     omiga = 2 * M_PI / T;
-    cosine = cos(omiga * phi);
+    cosine = sin(omiga * phi/10);
+
+    temp[flag]=cosine;
+    flag++;
+    //FFT();
+    if(flag>=512)
+    {
+        flag=0;
+        FFT(temp);
+    }
     if(symbol==1)
     {
         UARTa_Send_Period(T);
         UARTa_SendCosine_Value(cosine);
     }
+    else if(symbol==2)
+    {
+
+//        UARTa_SendCosine_Value(FFT(temp));
+//        FFT(temp);
+//        //FFT(temp);
+//        ReceivedChar=0;
+    }
     else
-    {}
+    {
+
+    }
 
 
     PieCtrlRegs.PIEACK.bit.ACK1=1;
@@ -126,7 +157,7 @@ void isSend(double send_num)
     }
     else if(ReceivedChar==0x54)
     {
-
+        symbol=2;
     }
     else
     {
@@ -135,12 +166,16 @@ void isSend(double send_num)
 }
 
 
+
 /*******************************************************************************
 * 函 数 名         : main
 * 函数功能         : 主函数
 * 输    入         : 无
 * 输    出         : 无
 *******************************************************************************/
+
+
+extern void FFT();
 void main()
 {
 
@@ -148,8 +183,6 @@ void main()
     D3=0;
     D4=0;
     D5=0;
-    char *msg;
-
 
     InitSysCtrl();
 
@@ -162,31 +195,21 @@ void main()
     KEY_Init();
     TIM0_Init(150,100000);
     UARTa_Init(115200);
-
     while(1)
     {
 
         T = get_key();
-
         get_UART();
         isSend(cosine);
 
-        //DELAY_US(1000000);
 
+
+
+
+
+
+        //while(1);
     }
-
-
-//    while(1)
-//    {
-//
-//        ReceivedChar = SciaRegs.SCIRXBUF.all;
-//        msg = "  You sent: ";
-//        if(ReceivedChar==0x74)//判断是否是't'字符
-//            UARTa_SendByte(ReceivedChar);
-//
-//        UARTa_SendCosine_Value(0.123867);
-//        DELAY_US(100000);
-//    }
 }
 
 

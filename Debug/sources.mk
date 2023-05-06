@@ -111,8 +111,10 @@ PDE_DEPS__QUOTED :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+C28x_FPU_LIB/lib \
 Lib \
 User \
+app/FFT \
 app/key \
 app/leds \
 app/time \
