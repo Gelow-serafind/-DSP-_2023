@@ -6,7 +6,7 @@
  */
 
 #include <FPU.h>
-
+#include <leds.h>
 //============================FFT_DEFINE===========================================
 #define RFFT_STAGES 9//N
 #define RFFT_SIZE   512//signal_SIZE
@@ -35,6 +35,7 @@ RFFT_F32_STRUCT rfft;
 
 double FFT(double origin_signal[])
 {
+    //LED1_TOGGLE;
     int i;
     for(i=0; i < RFFT_SIZE; i++)
     {
@@ -67,20 +68,15 @@ double FFT(double origin_signal[])
 
     RFFT_f32(&rfft);                   //Calculate real FFT
     RFFT_f32_mag(&rfft);                //Calculate magnitude
-
     MAX=nmax(RFFTmagBuff,RFFT_SIZE/2);
     fre=(MAX*10.0/RFFT_SIZE);
+    //LED1_TOGGLE;
     FRE=(1/fre)+0.5;
 //    fre=0.765;
 //    return MAX*10.0/RFFT_SIZE;
     return FRE;
 }
 
-//int get_T(double fre)
-//{
-//
-//    return 1/fre;
-//}
 
 
 int nmax(double arr[], int n)

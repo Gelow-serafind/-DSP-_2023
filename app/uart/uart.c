@@ -264,6 +264,7 @@ void UARTa_Send_Period(int num)
 
 void UARTa_Send_FFTPeriod(double num)
 {
+
     int int_num;
     msg="FFT measured period : ";
     UARTa_SendString(msg);

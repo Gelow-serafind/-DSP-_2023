@@ -132,7 +132,7 @@ void isSend(double send_num)
 interrupt void TIM0_IRQn(void)
 {
     EALLOW;
-    LED7_TOGGLE;
+
     phi ++;
     count ++;
     if(phi>512)
@@ -150,7 +150,6 @@ interrupt void TIM0_IRQn(void)
     {
         if (count>=10)
         {
-
             theta ++;
             if(theta>512)
                 theta=0;
@@ -166,13 +165,17 @@ interrupt void TIM0_IRQn(void)
         if (count>=10)
         {
 
-            clock1=clock();
+            //clock1=clock();
+
+
 
             UARTa_Send_FFTPeriod(FFT(temp));
-            //UARTa_SendFFT_Value(FFT(temp));
-            clock2=clock();
-            UARTa_SendTime_Value(clock1-clock2);
+            UARTa_SendFFT_Value(FFT(temp));
+
+            //clock2=clock();
+            //UARTa_SendTime_Value(clock1-clock2);
             count=0;
+
         }
         count++;
     }
@@ -201,11 +204,11 @@ extern double FFT();
 void main()
 {
 
+
     D2=0;
     D3=0;
     D4=0;
     D5=0;
-
 
     InitSysCtrl();
 
@@ -217,13 +220,16 @@ void main()
     LED_Init();
     KEY_Init();
     TIM0_Init(150,10000);
+
     UARTa_Init(115200);
+
     while(1)
     {
 
         T = get_key();
         get_UART();
         isSend(cosine);
+
     }
 }
 
