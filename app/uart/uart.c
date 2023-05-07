@@ -9,6 +9,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 
+char *msg;
+
 void UARTa_Init(Uint32 baud)
 {
 	unsigned char scihbaud=0;
@@ -120,54 +122,79 @@ int change_to_HEX(int dec)
     return hex;
 }
 
+void change_doubleFFT(double num)
+{
+    int num_temp;
+    num = num*1000;
+    int cosine = num;
+    cosine = (int) num;
+    cosine=absolute_value(cosine);
+    int cosine_list[3];
+    cosine_list[0]=find_hun(cosine);
+    cosine_list[1]=find_dec(cosine);
+    cosine_list[2]=find_byte(cosine);
+    int i=0;
+    for (i; i<3; i++)
+    {
+        num_temp=cosine_list[i];
+        num_temp=change_to_HEX(num_temp);
+        UARTa_SendByte(num_temp);
+    }
+}
+
+void change_double(double num)
+{
+    if(num==-1.0||num==1.0)
+        {
+
+            UARTa_SendByte(change_to_HEX(1));
+            msg=".";
+            UARTa_SendString(msg);
+            int i=0;
+            for (i; i<3; i++)
+            {
+                UARTa_SendByte(change_to_HEX(0));
+            }
+
+        }
+
+
+
+        else
+        {
+            msg="0.";
+            UARTa_SendString(msg);
+            int num_temp;
+            num = num*1000;
+            int cosine = num;
+            cosine = (int) num;
+            cosine=absolute_value(cosine);
+            int cosine_list[3];
+            cosine_list[0]=find_hun(cosine);
+            cosine_list[1]=find_dec(cosine);
+            cosine_list[2]=find_byte(cosine);
+            int i=0;
+            for (i; i<3; i++)
+            {
+                num_temp=cosine_list[i];
+                num_temp=change_to_HEX(num_temp);
+                UARTa_SendByte(num_temp);
+            }
+        }
+}
+
 
 void UARTa_SendCosine_Value(double num)
 {
-    char *msg="your value of cosine is : ";
+
+    msg="your value of cosine is : ";
     UARTa_SendString(msg);
     if (num<0)
     {
         msg="-";
         UARTa_SendString(msg);
     }
-
-    if(num==-1.0||num==1.0)
-    {
-
-        UARTa_SendByte(change_to_HEX(1));
-        msg=".";
-        UARTa_SendString(msg);
-        int i=0;
-        for (i; i<3; i++)
-        {
-            UARTa_SendByte(change_to_HEX(0));
-        }
-
-    }
-
-
-
-    else
-    {
-        msg="0.";
-        UARTa_SendString(msg);
-        int num_temp;
-        num = num*1000;
-        int cosine = num;
-        cosine = (int) num;
-        cosine=absolute_value(cosine);
-        int cosine_list[3];
-        cosine_list[0]=find_hun(cosine);
-        cosine_list[1]=find_dec(cosine);
-        cosine_list[2]=find_byte(cosine);
-        int i=0;
-        for (i; i<3; i++)
-        {
-            num_temp=cosine_list[i];
-            num_temp=change_to_HEX(num_temp);
-            UARTa_SendByte(num_temp);
-        }
-    }
+    change_double(num);
     msg="\n";
     UARTa_SendString(msg);
 
@@ -176,60 +203,42 @@ void UARTa_SendCosine_Value(double num)
 
 void UARTa_SendFFT_Value(double num)
 {
-    char *msg="The measure frequence is : ";
+    msg="The measure frequence is : ";
     UARTa_SendString(msg);
     if (num<0)
     {
         msg="-";
         UARTa_SendString(msg);
     }
+    change_double(num);
 
-    if(num==-1.0||num==1.0)
+    msg="\n";
+    UARTa_SendString(msg);
+
+}
+
+void UARTa_SendTime_Value(double num)
+{
+    msg="Time_used is : ";
+    UARTa_SendString(msg);
+    if (num<0)
     {
-
-        UARTa_SendByte(change_to_HEX(1));
-        msg=".";
+        msg="-";
         UARTa_SendString(msg);
-        int i=0;
-        for (i; i<3; i++)
-        {
-            UARTa_SendByte(change_to_HEX(0));
-        }
-
     }
+    change_double(num);
 
-
-
-    else
-    {
-        msg="0.";
-        UARTa_SendString(msg);
-        int num_temp;
-        num = num*1000;
-        int cosine = num;
-        cosine = (int) num;
-        cosine=absolute_value(cosine);
-        int cosine_list[3];
-        cosine_list[0]=find_hun(cosine);
-        cosine_list[1]=find_dec(cosine);
-        cosine_list[2]=find_byte(cosine);
-        int i=0;
-        for (i; i<3; i++)
-        {
-            num_temp=cosine_list[i];
-            num_temp=change_to_HEX(num_temp);
-            UARTa_SendByte(num_temp);
-        }
-    }
     msg="\n";
     UARTa_SendString(msg);
 
 }
 
 
+
+
 void UARTa_Send_Period(int num)
 {
-    char *msg="period : ";
+    msg="period : ";
     UARTa_SendString(msg);
     if (num<10)
     {
@@ -251,9 +260,46 @@ void UARTa_Send_Period(int num)
     }
     msg="  ";
     UARTa_SendString(msg);
-
-
 }
+
+void UARTa_Send_FFTPeriod(double num)
+{
+    int int_num;
+    msg="FFT measured period : ";
+    UARTa_SendString(msg);
+    int_num=num;
+    if (num<10)
+    {
+        UARTa_SendByte(change_to_HEX(int_num));
+        msg=".";
+        UARTa_SendString(msg);
+        num=num-int_num;
+        change_doubleFFT(num);
+    }
+    else
+    {
+        int T_list[2];
+        T_list[0]=find_dec_dec(int_num);
+        T_list[1]=find_byte(int_num);
+        int i;
+        int num_T;
+        for(i=0;i<2;i++)
+        {
+            num_T=T_list[i];
+            num_T=change_to_HEX(num_T);
+            UARTa_SendByte(num_T);
+        }
+        msg=".";
+        UARTa_SendString(msg);
+        num=num-int_num;
+        change_doubleFFT(num);
+    }
+    msg="  ";
+    UARTa_SendString(msg);
+}
+
+
+
 
 int find_hun(int num)
 {

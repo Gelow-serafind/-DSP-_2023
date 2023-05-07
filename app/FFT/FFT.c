@@ -29,23 +29,23 @@ float RFFTF32Coef[RFFT_SIZE];                 //Twiddle buffer
 
 int MAX;
 double fre;
+double FRE;
 RFFT_F32_STRUCT rfft;
 
 
-void FFT(double origin_signal[])
-//void FFT()
+double FFT(double origin_signal[])
 {
     int i;
     for(i=0; i < RFFT_SIZE; i++)
     {
         RFFTin1Buff[i] = 0.0f;
-    }
+    }//对传入数组进行清零
 
     for(i=0; i < RFFT_SIZE; i++)
     {
-        //RFFTin1Buff[i] = sin(2*M_PI*(1.0/15.0)*i/10) ; //Real input signal
         RFFTin1Buff[i]=origin_signal[i];
-    }
+    }//对传入数组进行赋值
+
     rfft.FFTSize   = RFFT_SIZE;
     rfft.FFTStages = RFFT_STAGES;
     rfft.InBuf     = &RFFTin1Buff[0];  //Input buffer
@@ -53,28 +53,34 @@ void FFT(double origin_signal[])
     rfft.CosSinBuf = &RFFTF32Coef[0];  //Twiddle factor buffer
     rfft.MagBuf    = &RFFTmagBuff[0];  //Magnitude buffer
 
-    RFFT_f32_sincostable(&rfft);       //Calculate twiddle factor
+    RFFT_f32_sincostable(&rfft);
 
     for (i=0; i < RFFT_SIZE; i++)
     {
-        RFFToutBuff[i] = 0;            //Clean up output buffer
+        RFFToutBuff[i] = 0;
     }
 
     for (i=0; i < RFFT_SIZE/2; i++)
     {
-        RFFTmagBuff[i] = 0;            //Clean up magnitude buffer
+        RFFTmagBuff[i] = 0;
     }
 
     RFFT_f32(&rfft);                   //Calculate real FFT
-
     RFFT_f32_mag(&rfft);                //Calculate magnitude
 
     MAX=nmax(RFFTmagBuff,RFFT_SIZE/2);
-
-    fre=MAX*10.0/RFFT_SIZE;
-    //UARTa_Send_Period(6);
-    //return fre;
+    fre=(MAX*10.0/RFFT_SIZE);
+    FRE=(1/fre)+0.5;
+//    fre=0.765;
+//    return MAX*10.0/RFFT_SIZE;
+    return FRE;
 }
+
+//int get_T(double fre)
+//{
+//
+//    return 1/fre;
+//}
 
 
 int nmax(double arr[], int n)

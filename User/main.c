@@ -25,7 +25,7 @@
 
 int C[4]={0,};
 int T=1;
-//int T_temp;
+//double FRE;
 int count=0;
 double phi=0;
 double theta;
@@ -33,10 +33,11 @@ double cosine;
 double omiga=2*M_PI;
 char key=0;
 int symbol=0;
+double clock1,clock2;
 Uint16 ReceivedChar=0;
 
 double temp[512]={0,};
-double FRE=0.0;
+
 int flag=0;
 
 
@@ -149,6 +150,7 @@ interrupt void TIM0_IRQn(void)
     {
         if (count>=10)
         {
+
             theta ++;
             if(theta>512)
                 theta=0;
@@ -160,14 +162,21 @@ interrupt void TIM0_IRQn(void)
     }
     else if(symbol==2)
     {
-        //double clock1,clock2;
-        //clock1=clock();
-        //FFT(temp);
-        UARTa_SendFFT_Value(FFT(temp));
-        //clock2=clock();
-        //UARTa_SendFFT_Value(clock1-clock2);
-        symbol=0;
+
+        if (count>=10)
+        {
+
+            clock1=clock();
+
+            UARTa_Send_FFTPeriod(FFT(temp));
+            //UARTa_SendFFT_Value(FFT(temp));
+            clock2=clock();
+            UARTa_SendTime_Value(clock1-clock2);
+            count=0;
+        }
+        count++;
     }
+
     else
     {
 
@@ -187,7 +196,8 @@ interrupt void TIM0_IRQn(void)
 *******************************************************************************/
 
 
-extern void FFT();
+extern double FFT();
+
 void main()
 {
 
@@ -195,6 +205,7 @@ void main()
     D3=0;
     D4=0;
     D5=0;
+
 
     InitSysCtrl();
 
@@ -211,7 +222,6 @@ void main()
     {
 
         T = get_key();
-
         get_UART();
         isSend(cosine);
     }

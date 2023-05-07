@@ -44,7 +44,7 @@
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/C28x_FPU_LIB/include}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/app/FFT}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/app/uart}"/>
-									<listOptionValue builtIn="false" value="D:\workspace_v7\test1\include"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/include}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/app/time}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/app/leds}"/>
 									<listOptionValue builtIn="false" value="${PROJECT_ROOT}"/>

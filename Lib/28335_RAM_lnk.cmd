@@ -88,6 +88,7 @@ PAGE 0 :
    RAML0      : origin = 0x008000, length = 0x001000
    RAML1      : origin = 0x009000, length = 0x001000
    RAML2      : origin = 0x00A000, length = 0x001000
+   //RAML3      : origin = 0x00B000, length = 0x00FC00
    RAML3      : origin = 0x00B000, length = 0x001000
    ZONE7A     : origin = 0x200000, length = 0x00FC00    /* XINTF zone 7 - program space */
    FLASHA     : origin = 0x338000, length = 0x007F80
@@ -123,8 +124,8 @@ SECTIONS
       re-directs execution to the start of user code.  */
    codestart        : > BEGIN,     PAGE = 0
    ramfuncs         : > RAML0,     PAGE = 0
-   .text            : > RAML0|RAML1|RAMM2,     PAGE = 0
-   //.text            : > FLASHA,     PAGE = 0
+   //.text            : > RAML3,     PAGE = 0
+   .text            : > FLASHA,     PAGE = 0
    //.text            : > FLASHA,     PAGE = 0
    .cinit           : > RAML0,     PAGE = 0
    .pinit           : > RAML0,     PAGE = 0
