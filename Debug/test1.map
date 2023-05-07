@@ -1,10 +1,10 @@
 ******************************************************************************
              TMS320C2000 Linker PC v16.9.6                     
 ******************************************************************************
->> Linked Sun May 07 00:37:45 2023
+>> Linked Sun May 07 15:03:39 2023
 
 OUTPUT FILE NAME:   <test1.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00008c3b
+ENTRY POINT SYMBOL: "_c_int00"  address: 00008ce6
 
 
 MEMORY CONFIGURATION
@@ -14,10 +14,10 @@ MEMORY CONFIGURATION
 PAGE 0:
   BEGIN                 00000000   00000002  00000002  00000000  RWIX
   RAMM0                 00000050   000003b0  00000000  000003b0  RWIX
-  RAML0                 00008000   00001000  00000e9a  00000166  RWIX
+  RAML0                 00008000   00001000  00000f45  000000bb  RWIX
   RAML1                 00009000   00001000  00000000  00001000  RWIX
   RAML2                 0000a000   00001000  00000476  00000b8a  RWIX
-  RAML3                 0000b000   00001000  00000133  00000ecd  RWIX
+  RAML3                 0000b000   00001000  0000014f  00000eb1  RWIX
   ZONE7A                00200000   0000fc00  00000000  0000fc00  RWIX
   FLASHA                00338000   00007f80  00000000  00007f80  RWIX
   CSM_RSVD              0033ff80   00000076  00000000  00000076  RWIX
@@ -97,50 +97,50 @@ codestart
 *          0    00000000    00000002     
                   00000000    00000002     DSP2833x_CodeStartBranch.obj (codestart)
 
-.cinit     0    00008000    0000004c     
-                  00008000    00000022     main.obj (.cinit)
-                  00008022    0000000e     rts2800_fpu32.lib : exit.obj (.cinit)
-                  00008030    0000000c     key.obj (.cinit)
-                  0000803c    00000005     rts2800_fpu32.lib : _lock.obj (.cinit:__lock)
-                  00008041    00000005                       : _lock.obj (.cinit:__unlock)
-                  00008046    00000004                       : errno.obj (.cinit)
-                  0000804a    00000002     --HOLE-- [fill = 0]
+.cinit     0    00008000    0000005a     
+                  00008000    00000030     main.obj (.cinit)
+                  00008030    0000000e     rts2800_fpu32.lib : exit.obj (.cinit)
+                  0000803e    0000000c     key.obj (.cinit)
+                  0000804a    00000005     rts2800_fpu32.lib : _lock.obj (.cinit:__lock)
+                  0000804f    00000005                       : _lock.obj (.cinit:__unlock)
+                  00008054    00000004                       : errno.obj (.cinit)
+                  00008058    00000002     --HOLE-- [fill = 0]
 
-ramfuncs   0    0000804c    00000004     
-                  0000804c    00000004     DSP2833x_usDelay.obj (ramfuncs)
+ramfuncs   0    0000805a    00000004     
+                  0000805a    00000004     DSP2833x_usDelay.obj (ramfuncs)
 
-.text      0    00008050    00000e4a     
-                  00008050    00000323     DSP2833x_DefaultIsr.obj (.text:retain)
-                  00008373    00000185     uart.obj (.text)
-                  000084f8    0000011d     C28x_FPU_Lib.lib : RFFT_f32.obj (.text)
-                  00008615    00000110     key.obj (.text)
-                  00008725    000000f8     DSP2833x_SysCtrl.obj (.text)
-                  0000881d    000000be     main.obj (.text)
-                  000088db    000000af     FFT.obj (.text)
-                  0000898a    00000088     rts2800_fpu32.lib : fs_div28.obj (.text)
-                  00008a12    00000085     main.obj (.text:retain)
-                  00008a97    0000007b     DSP2833x_CpuTimers.obj (.text)
-                  00008b12    00000070     C28x_FPU_Lib.lib : RFFT_f32_sincostable.obj (.text)
-                  00008b82    00000061     rts2800_fpu32.lib : s_cosf.obj (.text)
-                  00008be3    00000058                       : s_sinf.obj (.text)
-                  00008c3b    00000056                       : boot28.obj (.text)
-                  00008c91    00000044     C28x_FPU_Lib.lib : RFFT_f32_mag.obj (.text)
-                  00008cd5    00000044     leds.obj (.text)
-                  00008d19    0000003a     time.obj (.text)
-                  00008d53    00000029     rts2800_fpu32.lib : exit.obj (.text)
-                  00008d7c    00000028     DSP2833x_PieCtrl.obj (.text)
-                  00008da4    00000025     rts2800_fpu32.lib : e_sqrtf.obj (.text)
-                  00008dc9    00000024                       : cpy_tbl.obj (.text)
-                  00008ded    00000022                       : i_div28.obj (.text)
-                  00008e0f    00000020     DSP2833x_PieVect.obj (.text)
-                  00008e2f    0000001e     rts2800_fpu32.lib : memcpy.obj (.text)
-                  00008e4d    00000019     DSP2833x_Sci.obj (.text)
-                  00008e66    00000019     rts2800_fpu32.lib : args_main.obj (.text)
-                  00008e7f    00000009                       : _lock.obj (.text)
-                  00008e88    00000008     DSP2833x_CodeStartBranch.obj (.text)
-                  00008e90    00000007     DSP2833x_DisInt.obj (.text)
-                  00008e97    00000002     rts2800_fpu32.lib : pre_init.obj (.text)
-                  00008e99    00000001                       : startup.obj (.text)
+.text      0    0000805e    00000ee7     
+                  0000805e    00000323     DSP2833x_DefaultIsr.obj (.text:retain)
+                  00008381    000001ff     uart.obj (.text)
+                  00008580    0000011d     C28x_FPU_Lib.lib : RFFT_f32.obj (.text)
+                  0000869d    00000110     key.obj (.text)
+                  000087ad    000000f8     DSP2833x_SysCtrl.obj (.text)
+                  000088a5    000000be     main.obj (.text)
+                  00008963    000000af     FFT.obj (.text)
+                  00008a12    000000a8     main.obj (.text:retain)
+                  00008aba    00000088     rts2800_fpu32.lib : fs_div28.obj (.text)
+                  00008b42    0000007b     DSP2833x_CpuTimers.obj (.text)
+                  00008bbd    00000070     C28x_FPU_Lib.lib : RFFT_f32_sincostable.obj (.text)
+                  00008c2d    00000061     rts2800_fpu32.lib : s_cosf.obj (.text)
+                  00008c8e    00000058                       : s_sinf.obj (.text)
+                  00008ce6    00000056                       : boot28.obj (.text)
+                  00008d3c    00000044     C28x_FPU_Lib.lib : RFFT_f32_mag.obj (.text)
+                  00008d80    00000044     leds.obj (.text)
+                  00008dc4    0000003a     time.obj (.text)
+                  00008dfe    00000029     rts2800_fpu32.lib : exit.obj (.text)
+                  00008e27    00000028     DSP2833x_PieCtrl.obj (.text)
+                  00008e4f    00000001     rts2800_fpu32.lib : startup.obj (.text)
+                  00008e50    00000025                       : e_sqrtf.obj (.text)
+                  00008e75    00000024                       : cpy_tbl.obj (.text)
+                  00008e99    00000022                       : i_div28.obj (.text)
+                  00008ebb    00000020     DSP2833x_PieVect.obj (.text)
+                  00008edb    0000001e     rts2800_fpu32.lib : memcpy.obj (.text)
+                  00008ef9    00000019     DSP2833x_Sci.obj (.text)
+                  00008f12    00000019     rts2800_fpu32.lib : args_main.obj (.text)
+                  00008f2b    00000009                       : _lock.obj (.text)
+                  00008f34    00000008     DSP2833x_CodeStartBranch.obj (.text)
+                  00008f3c    00000007     DSP2833x_DisInt.obj (.text)
+                  00008f43    00000002     rts2800_fpu32.lib : pre_init.obj (.text)
 
 .pinit     0    00008000    00000000     UNINITIALIZED
 
@@ -154,9 +154,9 @@ ramfuncs   0    0000804c    00000004
                   0000a472    00000002                       : _lock.obj (.ebss:__lock)
                   0000a474    00000002                       : _lock.obj (.ebss:__unlock)
 
-.econst    0    0000b000    00000133     
+.econst    0    0000b000    0000014f     
                   0000b000    00000100     DSP2833x_PieVect.obj (.econst:_PieVectTableInit)
-                  0000b100    00000033     uart.obj (.econst:.string)
+                  0000b100    0000004f     uart.obj (.econst:.string)
 
 .adc_cal   0    00380080    00000007     NOLOAD SECTION
                   00380080    00000007     DSP2833x_ADC_cal.obj (.adc_cal)
@@ -400,9 +400,9 @@ MODULE SUMMARY
        Total:                            1299   256                2702              
                                                                                      
     .\User\
-       main.obj                          323    34                 1088              
+       main.obj                          358    48                 1088              
     +--+---------------------------------+------+------------------+--------------------+
-       Total:                            323    34                 1088              
+       Total:                            358    48                 1088              
                                                                                      
     .\app\FFT\
        FFT.obj                           175    0                  3602              
@@ -425,9 +425,9 @@ MODULE SUMMARY
        Total:                            58     0                  0                 
                                                                                      
     .\app\uart\
-       uart.obj                          389    51                 0                 
+       uart.obj                          511    79                 0                 
     +--+---------------------------------+------+------------------+--------------------+
-       Total:                            389    51                 0                 
+       Total:                            511    79                 0                 
                                                                                      
     ../C28x_FPU_LIB/lib/C28x_FPU_Lib.lib
        RFFT_f32.obj                      285    0                  0                 
@@ -456,7 +456,7 @@ MODULE SUMMARY
                                                                                      
        Stack:                            0      0                  768               
     +--+---------------------------------+------+------------------+--------------------+
-       Grand Total:                      3671   381                8174              
+       Grand Total:                      3828   423                8174              
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -551,15 +551,18 @@ address     data page           name
 
 00007900     1e4 (00007900)     _I2caRegs
 
-0000a000     280 (0000a000)     _flag
+0000a000     280 (0000a000)     _T
 0000a001     280 (0000a000)     _ReceivedChar
-0000a002     280 (0000a000)     _T
+0000a002     280 (0000a000)     _flag
 0000a003     280 (0000a000)     _key
 0000a004     280 (0000a000)     _symbol
+0000a005     280 (0000a000)     _count
 0000a006     280 (0000a000)     _omiga
-0000a008     280 (0000a000)     _phi
-0000a00a     280 (0000a000)     _cosine
-0000a00c     280 (0000a000)     _C
+0000a008     280 (0000a000)     _cosine
+0000a00a     280 (0000a000)     _theta
+0000a00c     280 (0000a000)     _FRE
+0000a00e     280 (0000a000)     _phi
+0000a010     280 (0000a000)     _C
 
 0000a040     281 (0000a040)     _temp
 
@@ -593,17 +596,17 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 page  address   name                                  
 ----  -------   ----                                  
-0     00008050  .text                                 
-0     00008d53  C$$EXIT                               
-0     0000898a  FS$$DIV                               
-0     00008ded  I$$DIV                                
-0     00008dfe  I$$MOD                                
-0     00008136  _ADCINT_ISR                           
+0     0000805e  .text                                 
+0     00008dfe  C$$EXIT                               
+0     00008aba  FS$$DIV                               
+0     00008e99  I$$DIV                                
+0     00008eaa  I$$MOD                                
+0     00008144  _ADCINT_ISR                           
 0     00380080  _ADC_cal                              
 1     00000b00  _AdcMirror                            
 1     00007100  _AdcRegs                              
-0     0000a00c  _C                                    
-0     00008ad8  _ConfigCpuTimer                       
+0     0000a010  _C                                    
+0     00008b83  _ConfigCpuTimer                       
 0     0000a450  _CpuTimer0                            
 1     00000c00  _CpuTimer0Regs                        
 0     0000a440  _CpuTimer1                            
@@ -612,30 +615,30 @@ page  address   name
 1     00000c10  _CpuTimer2Regs                        
 1     0033fff8  _CsmPwl                               
 1     00000ae0  _CsmRegs                              
-0     000087ec  _CsmUnlock                            
-0     00008064  _DATALOG_ISR                          
-0     00008258  _DINTCH1_ISR                          
-0     00008262  _DINTCH2_ISR                          
-0     0000826c  _DINTCH3_ISR                          
-0     00008276  _DINTCH4_ISR                          
-0     00008280  _DINTCH5_ISR                          
-0     0000828a  _DINTCH6_ISR                          
-0     00008e90  _DSP28x_DisableInt                    
-0     00008e94  _DSP28x_RestoreInt                    
-0     0000804c  _DSP28x_usDelay                       
+0     00008874  _CsmUnlock                            
+0     00008072  _DATALOG_ISR                          
+0     00008266  _DINTCH1_ISR                          
+0     00008270  _DINTCH2_ISR                          
+0     0000827a  _DINTCH3_ISR                          
+0     00008284  _DINTCH4_ISR                          
+0     0000828e  _DINTCH5_ISR                          
+0     00008298  _DINTCH6_ISR                          
+0     00008f3c  _DSP28x_DisableInt                    
+0     00008f40  _DSP28x_RestoreInt                    
+0     0000805a  _DSP28x_usDelay                       
 1     00000880  _DevEmuRegs                           
-0     00008738  _DisableDog                           
+0     000087c0  _DisableDog                           
 1     00001000  _DmaRegs                              
-0     000082e4  _ECAN0INTA_ISR                        
-0     000082f8  _ECAN0INTB_ISR                        
-0     000082ee  _ECAN1INTA_ISR                        
-0     00008302  _ECAN1INTB_ISR                        
-0     000081cc  _ECAP1_INT_ISR                        
-0     000081d6  _ECAP2_INT_ISR                        
-0     000081e0  _ECAP3_INT_ISR                        
-0     000081ea  _ECAP4_INT_ISR                        
-0     000081f4  _ECAP5_INT_ISR                        
-0     000081fe  _ECAP6_INT_ISR                        
+0     000082f2  _ECAN0INTA_ISR                        
+0     00008306  _ECAN0INTB_ISR                        
+0     000082fc  _ECAN1INTA_ISR                        
+0     00008310  _ECAN1INTB_ISR                        
+0     000081da  _ECAP1_INT_ISR                        
+0     000081e4  _ECAP2_INT_ISR                        
+0     000081ee  _ECAP3_INT_ISR                        
+0     000081f8  _ECAP4_INT_ISR                        
+0     00008202  _ECAP5_INT_ISR                        
+0     0000820c  _ECAP6_INT_ISR                        
 1     00006040  _ECanaLAMRegs                         
 1     000060c0  _ECanaMOTORegs                        
 1     00006080  _ECanaMOTSRegs                        
@@ -652,122 +655,124 @@ page  address   name
 1     00006a60  _ECap4Regs                            
 1     00006a80  _ECap5Regs                            
 1     00006aa0  _ECap6Regs                            
-0     00008352  _EMPTY_ISR                            
-0     00008078  _EMUINT_ISR                           
-0     00008190  _EPWM1_INT_ISR                        
-0     00008154  _EPWM1_TZINT_ISR                      
-0     0000819a  _EPWM2_INT_ISR                        
-0     0000815e  _EPWM2_TZINT_ISR                      
-0     000081a4  _EPWM3_INT_ISR                        
-0     00008168  _EPWM3_TZINT_ISR                      
-0     000081ae  _EPWM4_INT_ISR                        
-0     00008172  _EPWM4_TZINT_ISR                      
-0     000081b8  _EPWM5_INT_ISR                        
-0     0000817c  _EPWM5_TZINT_ISR                      
-0     000081c2  _EPWM6_INT_ISR                        
-0     00008186  _EPWM6_TZINT_ISR                      
+0     00008360  _EMPTY_ISR                            
+0     00008086  _EMUINT_ISR                           
+0     0000819e  _EPWM1_INT_ISR                        
+0     00008162  _EPWM1_TZINT_ISR                      
+0     000081a8  _EPWM2_INT_ISR                        
+0     0000816c  _EPWM2_TZINT_ISR                      
+0     000081b2  _EPWM3_INT_ISR                        
+0     00008176  _EPWM3_TZINT_ISR                      
+0     000081bc  _EPWM4_INT_ISR                        
+0     00008180  _EPWM4_TZINT_ISR                      
+0     000081c6  _EPWM5_INT_ISR                        
+0     0000818a  _EPWM5_TZINT_ISR                      
+0     000081d0  _EPWM6_INT_ISR                        
+0     00008194  _EPWM6_TZINT_ISR                      
 1     00006800  _EPwm1Regs                            
 1     00006840  _EPwm2Regs                            
 1     00006880  _EPwm3Regs                            
 1     000068c0  _EPwm4Regs                            
 1     00006900  _EPwm5Regs                            
 1     00006940  _EPwm6Regs                            
-0     00008208  _EQEP1_INT_ISR                        
-0     00008212  _EQEP2_INT_ISR                        
+0     00008216  _EQEP1_INT_ISR                        
+0     00008220  _EQEP2_INT_ISR                        
 1     00006b00  _EQep1Regs                            
 1     00006b40  _EQep2Regs                            
-0     00008d9b  _EnableInterrupts                     
-0     000088db  _FFT                                  
+0     00008e46  _EnableInterrupts                     
+0     00008963  _FFT                                  
+0     0000a00c  _FRE                                  
 1     00000a80  _FlashRegs                            
 1     00006f80  _GpioCtrlRegs                         
 1     00006fc0  _GpioDataRegs                         
 1     00006fe0  _GpioIntRegs                          
-0     00008294  _I2CINT1A_ISR                         
-0     0000829e  _I2CINT2A_ISR                         
+0     000082a2  _I2CINT1A_ISR                         
+0     000082ac  _I2CINT2A_ISR                         
 1     00007900  _I2caRegs                             
-0     0000808c  _ILLEGAL_ISR                          
-0     00008050  _INT13_ISR                            
-0     0000805a  _INT14_ISR                            
-0     00008a97  _InitCpuTimers                        
-0     00008791  _InitPeripheralClocks                 
-0     00008d7c  _InitPieCtrl                          
-0     00008e0f  _InitPieVectTable                     
-0     00008740  _InitPll                              
-0     00008e4d  _InitSci                              
-0     00008e4e  _InitSciGpio                          
-0     00008e51  _InitSciaGpio                         
-0     00008725  _InitSysCtrl                          
-0     00008615  _KEY_Init                             
-0     0000864b  _KEY_Scan                             
-0     00008cd5  _LED_Init                             
-0     00008348  _LUF_ISR                              
-0     0000833e  _LVF_ISR                              
+0     0000809a  _ILLEGAL_ISR                          
+0     0000805e  _INT13_ISR                            
+0     00008068  _INT14_ISR                            
+0     00008b42  _InitCpuTimers                        
+0     00008819  _InitPeripheralClocks                 
+0     00008e27  _InitPieCtrl                          
+0     00008ebb  _InitPieVectTable                     
+0     000087c8  _InitPll                              
+0     00008ef9  _InitSci                              
+0     00008efa  _InitSciGpio                          
+0     00008efd  _InitSciaGpio                         
+0     000087ad  _InitSysCtrl                          
+0     0000869d  _KEY_Init                             
+0     000086d3  _KEY_Scan                             
+0     00008d80  _LED_Init                             
+0     00008356  _LUF_ISR                              
+0     0000834c  _LVF_ISR                              
 0     0000a458  _MAX                                  
-0     00008244  _MRINTA_ISR                           
-0     00008230  _MRINTB_ISR                           
-0     0000824e  _MXINTA_ISR                           
-0     0000823a  _MXINTB_ISR                           
+0     00008252  _MRINTA_ISR                           
+0     0000823e  _MRINTB_ISR                           
+0     0000825c  _MXINTA_ISR                           
+0     00008248  _MXINTB_ISR                           
 1     00005000  _McbspaRegs                           
 1     00005040  _McbspbRegs                           
-0     00008082  _NMI_ISR                              
-0     0000835f  _PIE_RESERVED                         
+0     00008090  _NMI_ISR                              
+0     0000836d  _PIE_RESERVED                         
 1     00000ce0  _PieCtrlRegs                          
 1     00000d00  _PieVectTable                         
 0     0000b000  _PieVectTableInit                     
 1     0000f000  _RFFTF32Coef                          
-0     000084f8  _RFFT_f32                             
-0     00008c91  _RFFT_f32_mag                         
-0     00008b12  _RFFT_f32_sincostable                 
+0     00008580  _RFFT_f32                             
+0     00008d3c  _RFFT_f32_mag                         
+0     00008bbd  _RFFT_f32_sincostable                 
 1     0000c000  _RFFTin1Buff                          
 1     0000e000  _RFFTmagBuff                          
 1     0000d000  _RFFToutBuff                          
-0     0000806e  _RTOSINT_ISR                          
+0     0000807c  _RTOSINT_ISR                          
 0     0000a001  _ReceivedChar                         
-0     000082bc  _SCIRXINTA_ISR                        
-0     000082d0  _SCIRXINTB_ISR                        
-0     000082a8  _SCIRXINTC_ISR                        
-0     000082c6  _SCITXINTA_ISR                        
-0     000082da  _SCITXINTB_ISR                        
-0     000082b2  _SCITXINTC_ISR                        
-0     0000810e  _SEQ1INT_ISR                          
-0     00008118  _SEQ2INT_ISR                          
-0     0000821c  _SPIRXINTA_ISR                        
-0     00008226  _SPITXINTA_ISR                        
+0     000082ca  _SCIRXINTA_ISR                        
+0     000082de  _SCIRXINTB_ISR                        
+0     000082b6  _SCIRXINTC_ISR                        
+0     000082d4  _SCITXINTA_ISR                        
+0     000082e8  _SCITXINTB_ISR                        
+0     000082c0  _SCITXINTC_ISR                        
+0     0000811c  _SEQ1INT_ISR                          
+0     00008126  _SEQ2INT_ISR                          
+0     0000822a  _SPIRXINTA_ISR                        
+0     00008234  _SPITXINTA_ISR                        
 1     00007050  _SciaRegs                             
 1     00007750  _ScibRegs                             
 1     00007770  _ScicRegs                             
-0     0000872e  _ServiceDog                           
+0     000087b6  _ServiceDog                           
 1     00007040  _SpiaRegs                             
 1     00007010  _SysCtrlRegs                          
-0     0000a002  _T                                    
+0     0000a000  _T                                    
 0     00008a12  _TIM0_IRQn                            
-0     00008d19  _TIM0_Init                            
-0     00008140  _TINT0_ISR                            
-0     00008373  _UARTa_Init                           
-0     000083ac  _UARTa_SendByte                       
-0     00008412  _UARTa_SendCosine_Value               
-0     000083b8  _UARTa_SendString                     
-0     0000848c  _UARTa_Send_Period                    
-0     000080f0  _USER10_ISR                           
-0     000080fa  _USER11_ISR                           
-0     00008104  _USER12_ISR                           
-0     00008096  _USER1_ISR                            
-0     000080a0  _USER2_ISR                            
-0     000080aa  _USER3_ISR                            
-0     000080b4  _USER4_ISR                            
-0     000080be  _USER5_ISR                            
-0     000080c8  _USER6_ISR                            
-0     000080d2  _USER7_ISR                            
-0     000080dc  _USER8_ISR                            
-0     000080e6  _USER9_ISR                            
-0     0000814a  _WAKEINT_ISR                          
-0     00008122  _XINT1_ISR                            
-0     0000812c  _XINT2_ISR                            
-0     0000830c  _XINT3_ISR                            
-0     00008316  _XINT4_ISR                            
-0     00008320  _XINT5_ISR                            
-0     0000832a  _XINT6_ISR                            
-0     00008334  _XINT7_ISR                            
+0     00008dc4  _TIM0_Init                            
+0     0000814e  _TINT0_ISR                            
+0     00008381  _UARTa_Init                           
+0     000083ba  _UARTa_SendByte                       
+0     00008420  _UARTa_SendCosine_Value               
+0     0000849a  _UARTa_SendFFT_Value                  
+0     000083c6  _UARTa_SendString                     
+0     00008514  _UARTa_Send_Period                    
+0     000080fe  _USER10_ISR                           
+0     00008108  _USER11_ISR                           
+0     00008112  _USER12_ISR                           
+0     000080a4  _USER1_ISR                            
+0     000080ae  _USER2_ISR                            
+0     000080b8  _USER3_ISR                            
+0     000080c2  _USER4_ISR                            
+0     000080cc  _USER5_ISR                            
+0     000080d6  _USER6_ISR                            
+0     000080e0  _USER7_ISR                            
+0     000080ea  _USER8_ISR                            
+0     000080f4  _USER9_ISR                            
+0     00008158  _WAKEINT_ISR                          
+0     00008130  _XINT1_ISR                            
+0     0000813a  _XINT2_ISR                            
+0     0000831a  _XINT3_ISR                            
+0     00008324  _XINT4_ISR                            
+0     0000832e  _XINT5_ISR                            
+0     00008338  _XINT6_ISR                            
+0     00008342  _XINT7_ISR                            
 1     00007070  _XIntruptRegs                         
 1     00000b20  _XintfRegs                            
 1     00000700  __STACK_END                           
@@ -781,60 +786,62 @@ abs   ffffffff  ___TI_prof_data_start
 abs   ffffffff  ___binit__                            
 abs   ffffffff  ___c_args__                           
 0     00008000  ___cinit__                            
-0     00008e9a  ___etext__                            
+0     00008f45  ___etext__                            
 abs   ffffffff  ___pinit__                            
-0     00008050  ___text__                             
-0     00008e66  __args_main                           
+0     0000805e  ___text__                             
+0     00008f12  __args_main                           
 0     0000a472  __lock                                
-0     00008e87  __nop                                 
-0     00008e83  __register_lock                       
-0     00008e7f  __register_unlock                     
+0     00008f33  __nop                                 
+0     00008f2f  __register_lock                       
+0     00008f2b  __register_unlock                     
 1     00000400  __stack                               
-0     00008e99  __system_post_cinit                   
-0     00008e97  __system_pre_init                     
+0     00008e4f  __system_post_cinit                   
+0     00008f43  __system_pre_init                     
 0     0000a474  __unlock                              
-0     00008d53  _abort                                
-0     000083cb  _absolute_value                       
-0     00008c3b  _c_int00                              
-0     00008840  _calculate_C                          
-0     000083d6  _change_to_HEX                        
-0     00008dc9  _copy_in                              
-0     00008b82  _cos                                  
-0     00008b82  _cosf                                 
-0     0000a00a  _cosine                               
-0     0000881d  _delay                                
+0     00008dfe  _abort                                
+0     000083d9  _absolute_value                       
+0     00008ce6  _c_int00                              
+0     000088c8  _calculate_C                          
+0     000083e4  _change_to_HEX                        
+0     00008e75  _copy_in                              
+0     00008c2d  _cos                                  
+0     00008c2d  _cosf                                 
+0     0000a008  _cosine                               
+0     0000a005  _count                                
+0     000088a5  _delay                                
 0     0000a471  _errno                                
-0     00008d55  _exit                                 
-0     000084f0  _find_byte                            
-0     000084cc  _find_dec                             
-0     000084e2  _find_dec_dec                         
-0     000084be  _find_hun                             
-0     0000a000  _flag                                 
+0     00008e00  _exit                                 
+0     00008578  _find_byte                            
+0     00008554  _find_dec                             
+0     0000856a  _find_dec_dec                         
+0     00008546  _find_hun                             
+0     0000a002  _flag                                 
 0     0000a45a  _fre                                  
-0     00008896  _get_UART                             
-0     00008854  _get_key                              
-0     0000889d  _isSend                               
+0     0000891e  _get_UART                             
+0     000088dc  _get_key                              
+0     00008925  _isSend                               
 0     0000a003  _key                                  
-0     000088b0  _main                                 
-0     00008e2f  _memcpy                               
-0     00008835  _modify                               
-0     0000895d  _nmax                                 
+0     00008938  _main                                 
+0     00008edb  _memcpy                               
+0     000088bd  _modify                               
+0     000089e5  _nmax                                 
 0     0000a006  _omiga                                
-0     0000a008  _phi                                  
+0     0000a00e  _phi                                  
 0     0000a45c  _rfft                                 
-0     00008501  _rfft_f32_Stages1and2and3andBitReverse
-0     0000856d  _rfft_f32_Stages4andUp                
-0     00008369  _rsvd_ISR                             
-0     00008be3  _sin                                  
-0     00008be3  _sinf                                 
-0     00008da4  _sqrt                                 
-0     00008da4  _sqrtf                                
+0     00008589  _rfft_f32_Stages1and2and3andBitReverse
+0     000085f5  _rfft_f32_Stages4andUp                
+0     00008377  _rsvd_ISR                             
+0     00008c8e  _sin                                  
+0     00008c8e  _sinf                                 
+0     00008e50  _sqrt                                 
+0     00008e50  _sqrtf                                
 0     0000a004  _symbol                               
 0     0000a040  _temp                                 
+0     0000a00a  _theta                                
 abs   ffffffff  binit                                 
 0     00008000  cinit                                 
 0     00000000  code_start                            
-0     00008e9a  etext                                 
+0     00008f45  etext                                 
 abs   ffffffff  pinit                                 
 
 
@@ -845,167 +852,171 @@ page  address   name
 0     00000000  code_start                            
 0     00008000  ___cinit__                            
 0     00008000  cinit                                 
-0     0000804c  _DSP28x_usDelay                       
-0     00008050  .text                                 
-0     00008050  _INT13_ISR                            
-0     00008050  ___text__                             
-0     0000805a  _INT14_ISR                            
-0     00008064  _DATALOG_ISR                          
-0     0000806e  _RTOSINT_ISR                          
-0     00008078  _EMUINT_ISR                           
-0     00008082  _NMI_ISR                              
-0     0000808c  _ILLEGAL_ISR                          
-0     00008096  _USER1_ISR                            
-0     000080a0  _USER2_ISR                            
-0     000080aa  _USER3_ISR                            
-0     000080b4  _USER4_ISR                            
-0     000080be  _USER5_ISR                            
-0     000080c8  _USER6_ISR                            
-0     000080d2  _USER7_ISR                            
-0     000080dc  _USER8_ISR                            
-0     000080e6  _USER9_ISR                            
-0     000080f0  _USER10_ISR                           
-0     000080fa  _USER11_ISR                           
-0     00008104  _USER12_ISR                           
-0     0000810e  _SEQ1INT_ISR                          
-0     00008118  _SEQ2INT_ISR                          
-0     00008122  _XINT1_ISR                            
-0     0000812c  _XINT2_ISR                            
-0     00008136  _ADCINT_ISR                           
-0     00008140  _TINT0_ISR                            
-0     0000814a  _WAKEINT_ISR                          
-0     00008154  _EPWM1_TZINT_ISR                      
-0     0000815e  _EPWM2_TZINT_ISR                      
-0     00008168  _EPWM3_TZINT_ISR                      
-0     00008172  _EPWM4_TZINT_ISR                      
-0     0000817c  _EPWM5_TZINT_ISR                      
-0     00008186  _EPWM6_TZINT_ISR                      
-0     00008190  _EPWM1_INT_ISR                        
-0     0000819a  _EPWM2_INT_ISR                        
-0     000081a4  _EPWM3_INT_ISR                        
-0     000081ae  _EPWM4_INT_ISR                        
-0     000081b8  _EPWM5_INT_ISR                        
-0     000081c2  _EPWM6_INT_ISR                        
-0     000081cc  _ECAP1_INT_ISR                        
-0     000081d6  _ECAP2_INT_ISR                        
-0     000081e0  _ECAP3_INT_ISR                        
-0     000081ea  _ECAP4_INT_ISR                        
-0     000081f4  _ECAP5_INT_ISR                        
-0     000081fe  _ECAP6_INT_ISR                        
-0     00008208  _EQEP1_INT_ISR                        
-0     00008212  _EQEP2_INT_ISR                        
-0     0000821c  _SPIRXINTA_ISR                        
-0     00008226  _SPITXINTA_ISR                        
-0     00008230  _MRINTB_ISR                           
-0     0000823a  _MXINTB_ISR                           
-0     00008244  _MRINTA_ISR                           
-0     0000824e  _MXINTA_ISR                           
-0     00008258  _DINTCH1_ISR                          
-0     00008262  _DINTCH2_ISR                          
-0     0000826c  _DINTCH3_ISR                          
-0     00008276  _DINTCH4_ISR                          
-0     00008280  _DINTCH5_ISR                          
-0     0000828a  _DINTCH6_ISR                          
-0     00008294  _I2CINT1A_ISR                         
-0     0000829e  _I2CINT2A_ISR                         
-0     000082a8  _SCIRXINTC_ISR                        
-0     000082b2  _SCITXINTC_ISR                        
-0     000082bc  _SCIRXINTA_ISR                        
-0     000082c6  _SCITXINTA_ISR                        
-0     000082d0  _SCIRXINTB_ISR                        
-0     000082da  _SCITXINTB_ISR                        
-0     000082e4  _ECAN0INTA_ISR                        
-0     000082ee  _ECAN1INTA_ISR                        
-0     000082f8  _ECAN0INTB_ISR                        
-0     00008302  _ECAN1INTB_ISR                        
-0     0000830c  _XINT3_ISR                            
-0     00008316  _XINT4_ISR                            
-0     00008320  _XINT5_ISR                            
-0     0000832a  _XINT6_ISR                            
-0     00008334  _XINT7_ISR                            
-0     0000833e  _LVF_ISR                              
-0     00008348  _LUF_ISR                              
-0     00008352  _EMPTY_ISR                            
-0     0000835f  _PIE_RESERVED                         
-0     00008369  _rsvd_ISR                             
-0     00008373  _UARTa_Init                           
-0     000083ac  _UARTa_SendByte                       
-0     000083b8  _UARTa_SendString                     
-0     000083cb  _absolute_value                       
-0     000083d6  _change_to_HEX                        
-0     00008412  _UARTa_SendCosine_Value               
-0     0000848c  _UARTa_Send_Period                    
-0     000084be  _find_hun                             
-0     000084cc  _find_dec                             
-0     000084e2  _find_dec_dec                         
-0     000084f0  _find_byte                            
-0     000084f8  _RFFT_f32                             
-0     00008501  _rfft_f32_Stages1and2and3andBitReverse
-0     0000856d  _rfft_f32_Stages4andUp                
-0     00008615  _KEY_Init                             
-0     0000864b  _KEY_Scan                             
-0     00008725  _InitSysCtrl                          
-0     0000872e  _ServiceDog                           
-0     00008738  _DisableDog                           
-0     00008740  _InitPll                              
-0     00008791  _InitPeripheralClocks                 
-0     000087ec  _CsmUnlock                            
-0     0000881d  _delay                                
-0     00008835  _modify                               
-0     00008840  _calculate_C                          
-0     00008854  _get_key                              
-0     00008896  _get_UART                             
-0     0000889d  _isSend                               
-0     000088b0  _main                                 
-0     000088db  _FFT                                  
-0     0000895d  _nmax                                 
-0     0000898a  FS$$DIV                               
+0     0000805a  _DSP28x_usDelay                       
+0     0000805e  .text                                 
+0     0000805e  _INT13_ISR                            
+0     0000805e  ___text__                             
+0     00008068  _INT14_ISR                            
+0     00008072  _DATALOG_ISR                          
+0     0000807c  _RTOSINT_ISR                          
+0     00008086  _EMUINT_ISR                           
+0     00008090  _NMI_ISR                              
+0     0000809a  _ILLEGAL_ISR                          
+0     000080a4  _USER1_ISR                            
+0     000080ae  _USER2_ISR                            
+0     000080b8  _USER3_ISR                            
+0     000080c2  _USER4_ISR                            
+0     000080cc  _USER5_ISR                            
+0     000080d6  _USER6_ISR                            
+0     000080e0  _USER7_ISR                            
+0     000080ea  _USER8_ISR                            
+0     000080f4  _USER9_ISR                            
+0     000080fe  _USER10_ISR                           
+0     00008108  _USER11_ISR                           
+0     00008112  _USER12_ISR                           
+0     0000811c  _SEQ1INT_ISR                          
+0     00008126  _SEQ2INT_ISR                          
+0     00008130  _XINT1_ISR                            
+0     0000813a  _XINT2_ISR                            
+0     00008144  _ADCINT_ISR                           
+0     0000814e  _TINT0_ISR                            
+0     00008158  _WAKEINT_ISR                          
+0     00008162  _EPWM1_TZINT_ISR                      
+0     0000816c  _EPWM2_TZINT_ISR                      
+0     00008176  _EPWM3_TZINT_ISR                      
+0     00008180  _EPWM4_TZINT_ISR                      
+0     0000818a  _EPWM5_TZINT_ISR                      
+0     00008194  _EPWM6_TZINT_ISR                      
+0     0000819e  _EPWM1_INT_ISR                        
+0     000081a8  _EPWM2_INT_ISR                        
+0     000081b2  _EPWM3_INT_ISR                        
+0     000081bc  _EPWM4_INT_ISR                        
+0     000081c6  _EPWM5_INT_ISR                        
+0     000081d0  _EPWM6_INT_ISR                        
+0     000081da  _ECAP1_INT_ISR                        
+0     000081e4  _ECAP2_INT_ISR                        
+0     000081ee  _ECAP3_INT_ISR                        
+0     000081f8  _ECAP4_INT_ISR                        
+0     00008202  _ECAP5_INT_ISR                        
+0     0000820c  _ECAP6_INT_ISR                        
+0     00008216  _EQEP1_INT_ISR                        
+0     00008220  _EQEP2_INT_ISR                        
+0     0000822a  _SPIRXINTA_ISR                        
+0     00008234  _SPITXINTA_ISR                        
+0     0000823e  _MRINTB_ISR                           
+0     00008248  _MXINTB_ISR                           
+0     00008252  _MRINTA_ISR                           
+0     0000825c  _MXINTA_ISR                           
+0     00008266  _DINTCH1_ISR                          
+0     00008270  _DINTCH2_ISR                          
+0     0000827a  _DINTCH3_ISR                          
+0     00008284  _DINTCH4_ISR                          
+0     0000828e  _DINTCH5_ISR                          
+0     00008298  _DINTCH6_ISR                          
+0     000082a2  _I2CINT1A_ISR                         
+0     000082ac  _I2CINT2A_ISR                         
+0     000082b6  _SCIRXINTC_ISR                        
+0     000082c0  _SCITXINTC_ISR                        
+0     000082ca  _SCIRXINTA_ISR                        
+0     000082d4  _SCITXINTA_ISR                        
+0     000082de  _SCIRXINTB_ISR                        
+0     000082e8  _SCITXINTB_ISR                        
+0     000082f2  _ECAN0INTA_ISR                        
+0     000082fc  _ECAN1INTA_ISR                        
+0     00008306  _ECAN0INTB_ISR                        
+0     00008310  _ECAN1INTB_ISR                        
+0     0000831a  _XINT3_ISR                            
+0     00008324  _XINT4_ISR                            
+0     0000832e  _XINT5_ISR                            
+0     00008338  _XINT6_ISR                            
+0     00008342  _XINT7_ISR                            
+0     0000834c  _LVF_ISR                              
+0     00008356  _LUF_ISR                              
+0     00008360  _EMPTY_ISR                            
+0     0000836d  _PIE_RESERVED                         
+0     00008377  _rsvd_ISR                             
+0     00008381  _UARTa_Init                           
+0     000083ba  _UARTa_SendByte                       
+0     000083c6  _UARTa_SendString                     
+0     000083d9  _absolute_value                       
+0     000083e4  _change_to_HEX                        
+0     00008420  _UARTa_SendCosine_Value               
+0     0000849a  _UARTa_SendFFT_Value                  
+0     00008514  _UARTa_Send_Period                    
+0     00008546  _find_hun                             
+0     00008554  _find_dec                             
+0     0000856a  _find_dec_dec                         
+0     00008578  _find_byte                            
+0     00008580  _RFFT_f32                             
+0     00008589  _rfft_f32_Stages1and2and3andBitReverse
+0     000085f5  _rfft_f32_Stages4andUp                
+0     0000869d  _KEY_Init                             
+0     000086d3  _KEY_Scan                             
+0     000087ad  _InitSysCtrl                          
+0     000087b6  _ServiceDog                           
+0     000087c0  _DisableDog                           
+0     000087c8  _InitPll                              
+0     00008819  _InitPeripheralClocks                 
+0     00008874  _CsmUnlock                            
+0     000088a5  _delay                                
+0     000088bd  _modify                               
+0     000088c8  _calculate_C                          
+0     000088dc  _get_key                              
+0     0000891e  _get_UART                             
+0     00008925  _isSend                               
+0     00008938  _main                                 
+0     00008963  _FFT                                  
+0     000089e5  _nmax                                 
 0     00008a12  _TIM0_IRQn                            
-0     00008a97  _InitCpuTimers                        
-0     00008ad8  _ConfigCpuTimer                       
-0     00008b12  _RFFT_f32_sincostable                 
-0     00008b82  _cos                                  
-0     00008b82  _cosf                                 
-0     00008be3  _sin                                  
-0     00008be3  _sinf                                 
-0     00008c3b  _c_int00                              
-0     00008c91  _RFFT_f32_mag                         
-0     00008cd5  _LED_Init                             
-0     00008d19  _TIM0_Init                            
-0     00008d53  C$$EXIT                               
-0     00008d53  _abort                                
-0     00008d55  _exit                                 
-0     00008d7c  _InitPieCtrl                          
-0     00008d9b  _EnableInterrupts                     
-0     00008da4  _sqrt                                 
-0     00008da4  _sqrtf                                
-0     00008dc9  _copy_in                              
-0     00008ded  I$$DIV                                
-0     00008dfe  I$$MOD                                
-0     00008e0f  _InitPieVectTable                     
-0     00008e2f  _memcpy                               
-0     00008e4d  _InitSci                              
-0     00008e4e  _InitSciGpio                          
-0     00008e51  _InitSciaGpio                         
-0     00008e66  __args_main                           
-0     00008e7f  __register_unlock                     
-0     00008e83  __register_lock                       
-0     00008e87  __nop                                 
-0     00008e90  _DSP28x_DisableInt                    
-0     00008e94  _DSP28x_RestoreInt                    
-0     00008e97  __system_pre_init                     
-0     00008e99  __system_post_cinit                   
-0     00008e9a  ___etext__                            
-0     00008e9a  etext                                 
-0     0000a000  _flag                                 
+0     00008aba  FS$$DIV                               
+0     00008b42  _InitCpuTimers                        
+0     00008b83  _ConfigCpuTimer                       
+0     00008bbd  _RFFT_f32_sincostable                 
+0     00008c2d  _cos                                  
+0     00008c2d  _cosf                                 
+0     00008c8e  _sin                                  
+0     00008c8e  _sinf                                 
+0     00008ce6  _c_int00                              
+0     00008d3c  _RFFT_f32_mag                         
+0     00008d80  _LED_Init                             
+0     00008dc4  _TIM0_Init                            
+0     00008dfe  C$$EXIT                               
+0     00008dfe  _abort                                
+0     00008e00  _exit                                 
+0     00008e27  _InitPieCtrl                          
+0     00008e46  _EnableInterrupts                     
+0     00008e4f  __system_post_cinit                   
+0     00008e50  _sqrt                                 
+0     00008e50  _sqrtf                                
+0     00008e75  _copy_in                              
+0     00008e99  I$$DIV                                
+0     00008eaa  I$$MOD                                
+0     00008ebb  _InitPieVectTable                     
+0     00008edb  _memcpy                               
+0     00008ef9  _InitSci                              
+0     00008efa  _InitSciGpio                          
+0     00008efd  _InitSciaGpio                         
+0     00008f12  __args_main                           
+0     00008f2b  __register_unlock                     
+0     00008f2f  __register_lock                       
+0     00008f33  __nop                                 
+0     00008f3c  _DSP28x_DisableInt                    
+0     00008f40  _DSP28x_RestoreInt                    
+0     00008f43  __system_pre_init                     
+0     00008f45  ___etext__                            
+0     00008f45  etext                                 
+0     0000a000  _T                                    
 0     0000a001  _ReceivedChar                         
-0     0000a002  _T                                    
+0     0000a002  _flag                                 
 0     0000a003  _key                                  
 0     0000a004  _symbol                               
+0     0000a005  _count                                
 0     0000a006  _omiga                                
-0     0000a008  _phi                                  
-0     0000a00a  _cosine                               
-0     0000a00c  _C                                    
+0     0000a008  _cosine                               
+0     0000a00a  _theta                                
+0     0000a00c  _FRE                                  
+0     0000a00e  _phi                                  
+0     0000a010  _C                                    
 0     0000a040  _temp                                 
 0     0000a440  _CpuTimer1                            
 0     0000a448  _CpuTimer2                            
@@ -1086,4 +1097,4 @@ abs   ffffffff  ___pinit__
 abs   ffffffff  binit                                 
 abs   ffffffff  pinit                                 
 
-[243 symbols]
+[247 symbols]

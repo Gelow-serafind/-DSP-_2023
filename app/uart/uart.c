@@ -174,6 +174,59 @@ void UARTa_SendCosine_Value(double num)
 }
 
 
+void UARTa_SendFFT_Value(double num)
+{
+    char *msg="The measure frequence is : ";
+    UARTa_SendString(msg);
+    if (num<0)
+    {
+        msg="-";
+        UARTa_SendString(msg);
+    }
+
+    if(num==-1.0||num==1.0)
+    {
+
+        UARTa_SendByte(change_to_HEX(1));
+        msg=".";
+        UARTa_SendString(msg);
+        int i=0;
+        for (i; i<3; i++)
+        {
+            UARTa_SendByte(change_to_HEX(0));
+        }
+
+    }
+
+
+
+    else
+    {
+        msg="0.";
+        UARTa_SendString(msg);
+        int num_temp;
+        num = num*1000;
+        int cosine = num;
+        cosine = (int) num;
+        cosine=absolute_value(cosine);
+        int cosine_list[3];
+        cosine_list[0]=find_hun(cosine);
+        cosine_list[1]=find_dec(cosine);
+        cosine_list[2]=find_byte(cosine);
+        int i=0;
+        for (i; i<3; i++)
+        {
+            num_temp=cosine_list[i];
+            num_temp=change_to_HEX(num_temp);
+            UARTa_SendByte(num_temp);
+        }
+    }
+    msg="\n";
+    UARTa_SendString(msg);
+
+}
+
+
 void UARTa_Send_Period(int num)
 {
     char *msg="period : ";

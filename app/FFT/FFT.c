@@ -72,6 +72,7 @@ void FFT(double origin_signal[])
     MAX=nmax(RFFTmagBuff,RFFT_SIZE/2);
 
     fre=MAX*10.0/RFFT_SIZE;
+    //UARTa_Send_Period(6);
     //return fre;
 }
 

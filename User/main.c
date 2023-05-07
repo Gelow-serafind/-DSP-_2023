@@ -25,14 +25,18 @@
 
 int C[4]={0,};
 int T=1;
+//int T_temp;
+int count=0;
 double phi=0;
+double theta;
 double cosine;
 double omiga=2*M_PI;
 char key=0;
 int symbol=0;
 Uint16 ReceivedChar=0;
 
-double temp[512];
+double temp[512]={0,};
+double FRE=0.0;
 int flag=0;
 
 
@@ -47,49 +51,7 @@ int flag=0;
 
 
 
-interrupt void TIM0_IRQn(void)
-{
-    EALLOW;
 
-    LED1_TOGGLE;
-
-    phi += 1;
-//    if(phi>2*M_PI)
-    if(phi>512)
-        phi=0;
-    omiga = 2 * M_PI / T;
-    cosine = sin(omiga * phi/10);
-
-    temp[flag]=cosine;
-    flag++;
-    //FFT();
-    if(flag>=512)
-    {
-        flag=0;
-        FFT(temp);
-    }
-    if(symbol==1)
-    {
-        UARTa_Send_Period(T);
-        UARTa_SendCosine_Value(cosine);
-    }
-    else if(symbol==2)
-    {
-
-//        UARTa_SendCosine_Value(FFT(temp));
-//        FFT(temp);
-//        //FFT(temp);
-//        ReceivedChar=0;
-    }
-    else
-    {
-
-    }
-
-
-    PieCtrlRegs.PIEACK.bit.ACK1=1;
-    EDIS;
-}
 
 
 void delay(void)
@@ -155,7 +117,7 @@ void isSend(double send_num)
     {
         symbol=1;
     }
-    else if(ReceivedChar==0x54)
+    else if(ReceivedChar==0x54)//ÅÐ¶ÏÊÇ·ñÊÇ'T'×Ö·û
     {
         symbol=2;
     }
@@ -165,6 +127,56 @@ void isSend(double send_num)
     }
 }
 
+
+interrupt void TIM0_IRQn(void)
+{
+    EALLOW;
+    LED7_TOGGLE;
+    phi ++;
+    count ++;
+    if(phi>512)
+        phi=0;
+    omiga = 2 * M_PI / T;
+    cosine = sin(omiga * phi/10);
+    temp[flag]=cosine;
+    flag++;
+
+    if(flag>512)
+    {
+        flag=0;
+    }
+    if(symbol==1)
+    {
+        if (count>=10)
+        {
+            theta ++;
+            if(theta>512)
+                theta=0;
+            UARTa_Send_Period(T);
+            UARTa_SendCosine_Value(sin(omiga * theta/10));
+            count=0;
+        }
+        count++;
+    }
+    else if(symbol==2)
+    {
+        //double clock1,clock2;
+        //clock1=clock();
+        //FFT(temp);
+        UARTa_SendFFT_Value(FFT(temp));
+        //clock2=clock();
+        //UARTa_SendFFT_Value(clock1-clock2);
+        symbol=0;
+    }
+    else
+    {
+
+    }
+
+
+    PieCtrlRegs.PIEACK.bit.ACK1=1;
+    EDIS;
+}
 
 
 /*******************************************************************************
@@ -193,22 +205,15 @@ void main()
 
     LED_Init();
     KEY_Init();
-    TIM0_Init(150,100000);
+    TIM0_Init(150,10000);
     UARTa_Init(115200);
     while(1)
     {
 
         T = get_key();
+
         get_UART();
         isSend(cosine);
-
-
-
-
-
-
-
-        //while(1);
     }
 }
 
